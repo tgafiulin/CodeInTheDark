@@ -1,11 +1,16 @@
-FROM python:3.12.3-slim
+# Используем базовый образ Python
+FROM python:3.9-slim
 
-WORKDIR /code
+# Устанавливаем рабочую директорию
+WORKDIR /app
 
-COPY ./requirements.txt ./
+# Копируем зависимости и код
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+# Указываем переменную окружения
+ENV PYTHONUNBUFFERED=1
 
-COPY ./app /code/app
-
-CMD ["python", "app/main.py"]
+# Запускаем бота
+CMD ["python", "bot.py"]
