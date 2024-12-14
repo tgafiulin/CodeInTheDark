@@ -8,7 +8,7 @@ import logging
 import asyncio
 from dotenv import load_dotenv
 from registration import router as registration_router  # Импортируем маршрутизатор из registration.py
-
+from create_round import create_round_router
 
 # Загрузка токена из .env
 load_dotenv()
@@ -26,6 +26,7 @@ main_router = Router()
 
 # Подключаем роутеры
 dp.include_router(registration_router)
+dp.include_router(create_round_router)
 dp.include_router(main_router)  # Основной роутер  # Роутер для регистрации
 
 # Обработчик команды /start
