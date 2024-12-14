@@ -9,8 +9,11 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
-# Указываем переменную окружения
+# Указываем переменные окружения
 ENV PYTHONUNBUFFERED=1
+
+# Указываем порт (например, 8080)
+EXPOSE 8080
 
 # Запускаем бота
 CMD ["python", "bot.py"]
